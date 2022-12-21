@@ -1,4 +1,4 @@
-export const pingRes = {
+export const ping = {
   async execute (interaction) {
     const username = interaction.member.user.username
     const guildname = interaction.member.guild.name

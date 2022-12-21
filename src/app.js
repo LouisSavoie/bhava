@@ -1,12 +1,10 @@
 // IMPORTS
 import * as dotenv from 'dotenv'
 import { Client, REST, Routes } from 'discord.js'
+import { interactionRouter } from './interactionRouter.js'
 
 // IMPORT COMMANDS
 import { ping } from './commands/ping.js'
-
-// IMPORT RESPONSES
-import { pingRes } from './responses/ping.js'
 
 // CONFIG ENV VARS
 dotenv.config()
@@ -24,18 +22,10 @@ const globalCommands = [
   ping
 ]
 
-// RESPONSES
-const responses = {
-  ping: pingRes
-}
-
 // INTERACTIONS
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
-
-  if (interaction.commandName === 'ping') {
-    responses.ping.execute(interaction)
-  }
+  interactionRouter(interaction)
   console.log('Interaction complete')
 })
 
