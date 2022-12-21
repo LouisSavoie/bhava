@@ -2,56 +2,23 @@
 import * as dotenv from 'dotenv'
 import { Client, REST, Routes } from 'discord.js'
 
+// IMPORT COMMANDS
+import { ping } from './commands/ping.js'
+
 // CONFIG ENV VARS
 dotenv.config()
 
+// CONSTRUCT CLIENT AND REST
 const client = new Client({ intents: ['Guilds', 'GuildMessages'] })
 const rest = new REST({ version: '10' }).setToken(process.env.BHAVA_TOKEN)
 
 // COMMANDS
 const testServerCommands = [
-  {
-    name: 'ping',
-    description: 'Replies with Pong!',
-    options: [
-      {
-        name: 'color',
-        description: 'Color of ball to get back',
-        type: 3,
-        required: false,
-        choices: [
-          {
-            name: 'Blue',
-            value: 'Blue'
-          },
-          {
-            name: 'Red',
-            value: 'Red'
-          }
-        ]
-      },
-      {
-        name: 'size',
-        description: 'Size of ball to get back',
-        type: 3,
-        required: false,
-        choices: [
-          {
-            name: 'Big',
-            value: 'Big'
-          },
-          {
-            name: 'Small',
-            value: 'Small'
-          }
-        ]
-      }
-    ]
-  }
+
 ]
 
 const globalCommands = [
-
+  ping
 ]
 
 // INTERACTIONS
@@ -59,25 +26,13 @@ client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
 
   if (interaction.commandName === 'ping') {
-    const color = interaction.options.getString('color')
-    const size = interaction.options.getString('size')
-
-    if (color && !size) {
-      await interaction.reply(`${color} Pong!`)
-    } else if (!color && size) {
-      await interaction.reply(`${size} Pong!`)
-    } else if (color && size) {
-      await interaction.reply(`${size} ${color} Pong!`)
-    } else {
-      await interaction.reply('Pong!')
-    }
+    const username = interaction.member.user.username
+    const guildname = interaction.member.guild.name
+    const guildid = interaction.member.guild.id
+    console.log(`${username} on ${guildname} (${guildid}) used (/) command ping`)
+    await interaction.reply('Pong!')
   }
 })
-
-// HELPERS
-// function capitalize (word) {
-//   return word.charAt(0).toUpperCase() + word.slice(1)
-// }
 
 // REGISTER COMMANDS
 async function registerCommands () {
