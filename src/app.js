@@ -12,15 +12,73 @@ const rest = new REST({ version: '10' }).setToken(process.env.BHAVA_TOKEN)
 const testServerCommands = [
   {
     name: 'ping',
-    description: 'Replies with Pong!'
+    description: 'Replies with Pong!',
+    options: [
+      {
+        name: 'color',
+        description: 'Color of ball to get back',
+        type: 3,
+        required: false,
+        choices: [
+          {
+            name: 'Blue',
+            value: 'Blue'
+          },
+          {
+            name: 'Red',
+            value: 'Red'
+          }
+        ]
+      },
+      {
+        name: 'size',
+        description: 'Size of ball to get back',
+        type: 3,
+        required: false,
+        choices: [
+          {
+            name: 'Big',
+            value: 'Big'
+          },
+          {
+            name: 'Small',
+            value: 'Small'
+          }
+        ]
+      }
+    ]
   }
 ]
+
 const globalCommands = [
-  {
-    name: 'ping',
-    description: 'Replies with Pong!'
-  }
+  
 ]
+
+// INTERACTIONS
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isChatInputCommand()) return
+
+  if (interaction.commandName === 'ping') {
+
+    const color = interaction.options.getString('color')
+    const size = interaction.options.getString('size')
+
+    if (color && !size) {
+      await interaction.reply(`${color} Pong!`)
+    } else if (!color && size) {
+      await interaction.reply(`${size} Pong!`)
+    } else if (color && size) {
+      await interaction.reply(`${size} ${color} Pong!`)
+    } else {
+      await interaction.reply('Pong!')
+    }
+  }
+})
+
+// HELPERS
+function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1)
+}
 
 // REGISTER COMMANDS
 async function registerCommands () {
