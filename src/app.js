@@ -5,6 +5,9 @@ import { Client, REST, Routes } from 'discord.js'
 // IMPORT COMMANDS
 import { ping } from './commands/ping.js'
 
+// IMPORT RESPONSES
+import { pingRes } from './responses/ping.js'
+
 // CONFIG ENV VARS
 dotenv.config()
 
@@ -21,17 +24,19 @@ const globalCommands = [
   ping
 ]
 
+// RESPONSES
+const responses = {
+  ping: pingRes
+}
+
 // INTERACTIONS
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
 
   if (interaction.commandName === 'ping') {
-    const username = interaction.member.user.username
-    const guildname = interaction.member.guild.name
-    const guildid = interaction.member.guild.id
-    console.log(`${username} on ${guildname} (${guildid}) used (/) command ping`)
-    await interaction.reply('Pong!')
+    responses.ping.execute(interaction)
   }
+  console.log('Interaction complete')
 })
 
 // REGISTER COMMANDS
