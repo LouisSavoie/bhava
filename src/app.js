@@ -51,7 +51,7 @@ const testServerCommands = [
 ]
 
 const globalCommands = [
-  
+
 ]
 
 // INTERACTIONS
@@ -59,7 +59,6 @@ client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
 
   if (interaction.commandName === 'ping') {
-
     const color = interaction.options.getString('color')
     const size = interaction.options.getString('size')
 
@@ -76,9 +75,9 @@ client.on('interactionCreate', async interaction => {
 })
 
 // HELPERS
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1)
-}
+// function capitalize (word) {
+//   return word.charAt(0).toUpperCase() + word.slice(1)
+// }
 
 // REGISTER COMMANDS
 async function registerCommands () {
