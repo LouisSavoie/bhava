@@ -12,18 +12,18 @@ const rest = new REST({ version: '10' }).setToken(process.env.BHAVA_TOKEN)
 const testServerCommands = [
   {
     name: 'ping',
-    description: 'Replies with Pong!',
-  },
+    description: 'Replies with Pong!'
+  }
 ]
 const globalCommands = [
   {
     name: 'ping',
-    description: 'Replies with Pong!',
-  },
+    description: 'Replies with Pong!'
+  }
 ]
 
 // REGISTER COMMANDS
-async function registerCommands() {
+async function registerCommands () {
   // register test server commands
   try {
     console.log('Started refreshing test server (/) commands.')
@@ -46,12 +46,14 @@ async function registerCommands() {
   }
 }
 
-registerCommands()
-
-// LOG LOGIN
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`)
-})
-
 // LOGIN
-client.login(process.env.BHAVA_TOKEN)
+function login () {
+  client.login(process.env.BHAVA_TOKEN)
+  client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`)
+  })
+}
+
+// RUN
+registerCommands()
+login()
