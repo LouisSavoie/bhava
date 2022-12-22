@@ -13,3 +13,8 @@ Bhava is an all-rounder Discord bot.
 `/bloodmoon` *`days` Calculates when the next bloodmoon will rise in 7Days2Die
 
 *= Required Option
+
+
+## Development
+
+[View Trello Board](https://trello.com/b/fcvZAtub/bhava)
