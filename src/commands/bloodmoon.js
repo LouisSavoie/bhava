@@ -18,7 +18,7 @@ export const bloodmoonRes = {
     const guildid = interaction.member.guild.id
 
     const day = interaction.options.get('day').value
-    
+
     console.log(`${username} on ${guildname} (${guildid}) used /bloodmoon day:${day}`)
 
     if (day < 1) {
