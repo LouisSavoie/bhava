@@ -17,11 +17,17 @@ export const bloodmoonRes = {
     const guildname = interaction.member.guild.name
     const guildid = interaction.member.guild.id
 
-    console.log(`${username} on ${guildname} (${guildid}) used (/) command bloodmoon`)
+    const day = interaction.options.get('day').value
 
-    const today = interaction.options.get('day').value
-    const til = 7 - (today - (Math.floor(today / 7) * 7))
-    const onDay = today + til
+    console.log(`${username} on ${guildname} (${guildid}) used /bloodmoon day:${day}`)
+
+    if (day < 1) {
+      await interaction.reply(`Why is your server on day ${day}?`)
+      return
+    }
+
+    const til = 7 - (day - (Math.floor(day / 7) * 7))
+    const onDay = day + til
 
     if (til === 7) {
       await interaction.reply('Bloodmoon tonight, hold on to your butts!')
