@@ -1,6 +1,6 @@
 export const bloodmoon = {
   name: 'bloodmoon',
-  description: 'Calculates when the next bloodmoon will rise in 7Days2Die',
+  description: 'Calculates when the next bloodmoon will rise in 7 Days to Die',
   options: [
     {
       name: 'day',
