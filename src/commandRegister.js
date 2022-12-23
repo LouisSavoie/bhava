@@ -1,5 +1,5 @@
 import { REST, Routes } from 'discord.js'
-import { globalCommands, testServerCommands } from './commands.js'
+import { globalCommands, testServerCommands } from './index.js'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
