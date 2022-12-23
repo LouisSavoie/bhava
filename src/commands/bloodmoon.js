@@ -13,28 +13,22 @@ export const bloodmoon = {
 
 export const bloodmoonRes = {
   async execute (interaction) {
-    const username = interaction.member.user.username
-    const guildname = interaction.member.guild.name
-    const guildid = interaction.member.guild.id
-
     const day = interaction.options.get('day').value
-
-    console.log(`${username} on ${guildname} (${guildid}) used /bloodmoon day:${day}`)
 
     if (day < 1) {
       await interaction.reply(`Why is your server on day ${day}?`)
       return
     }
 
-    const til = 7 - (day - (Math.floor(day / 7) * 7))
-    const onDay = day + til
+    const nextBloodmoon = Math.ceil(day / 7) * 7
+    const daysRemaining = nextBloodmoon - day
+    const bloodmoonNumber = Math.ceil(day / 7)
 
-    if (til === 7) {
-      await interaction.reply('Bloodmoon tonight, hold on to your butts!')
-    } else if (til === 1) {
-      await interaction.reply(`Next bloodmoon in ${til} day, on day ${onDay}`)
-    } else {
-      await interaction.reply(`Next bloodmoon in ${til} days, on day ${onDay}`)
+    if (!daysRemaining) {
+      await interaction.reply(`Bloodmoon number ${bloodmoonNumber} tonight, HOLD ON TO YOUR BUTTS!`)
+      return
     }
+    const s = daysRemaining === 1 ? '' : 's'
+    await interaction.reply(`Bloodmoon number ${bloodmoonNumber} in ${daysRemaining} day${s}, on day ${nextBloodmoon}`)
   }
 }
