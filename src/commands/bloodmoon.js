@@ -13,13 +13,7 @@ export const bloodmoon = {
 
 export const bloodmoonRes = {
   async execute (interaction) {
-    const username = interaction.member.user.username
-    const guildname = interaction.member.guild.name
-    const guildid = interaction.member.guild.id
-
     const day = interaction.options.get('day').value
-
-    console.log(`${username} on ${guildname} (${guildid}) used /bloodmoon day:${day}`)
 
     if (day < 1) {
       await interaction.reply(`Why is your server on day ${day}?`)
