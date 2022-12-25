@@ -1,6 +1,6 @@
 export const bloodmoon = {
   name: 'bloodmoon',
-  description: 'Calculates when the next bloodmoon will rise in 7 Days to Die',
+  description: 'Calculates when the next blood moon will rise in 7 Days to Die',
   options: [
     {
       name: 'day',
@@ -25,10 +25,10 @@ export const bloodmoonRes = {
     const bloodmoonNumber = Math.ceil(day / 7)
 
     if (!daysRemaining) {
-      await interaction.reply(`Bloodmoon number ${bloodmoonNumber} tonight, HOLD ON TO YOUR BUTTS!`)
+      await interaction.reply(`Blood moon number ${bloodmoonNumber} tonight, HOLD ON TO YOUR BUTTS!`)
       return
     }
     const s = daysRemaining === 1 ? '' : 's'
-    await interaction.reply(`Bloodmoon number ${bloodmoonNumber} in ${daysRemaining} day${s}, on day ${nextBloodmoon}`)
+    await interaction.reply(`Blood moon number ${bloodmoonNumber} in ${daysRemaining} day${s}, on day ${nextBloodmoon}`)
   }
 }
