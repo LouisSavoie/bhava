@@ -2,15 +2,15 @@
 
 # <span style="font-size: 64px;"><img src="icons/bhava-icon.png" alt="Bhavachakra, the wheel of becoming" width="44"/>Bhava</span>
 
-Bhava is an all-rounder Discord bot.
+Bhava is an all-rounder Discord bot
 
 ## Commands
 
 **Misc**
 
-`/ping` Pings the bot to check if it's responding.
+`/ping` Pings the bot to check if it's responding
 
-`/bloodmoon` *`days` Calculates when the next bloodmoon will rise in 7 Days to Die
+`/bloodmoon` *`days` Calculates when the next blood moon will rise in 7 Days to Die
 
 *= Required Option
 
