@@ -7,6 +7,12 @@ export const bloodmoon = {
       description: 'The day number on your server',
       type: 4,
       required: true
+    },
+    {
+      name: 'freq',
+      description: 'The frequency on your server if different from the default of 7',
+      type: 4,
+      required: false
     }
   ]
 }
@@ -14,15 +20,16 @@ export const bloodmoon = {
 export const bloodmoonRes = {
   async execute (interaction) {
     const day = interaction.options.get('day').value
+    const freq = interaction.options.get('freq') ? interaction.options.get('freq').value : 7
 
     if (day < 1) {
       await interaction.reply(`Why is your server on day ${day}?`)
       return
     }
 
-    const nextBloodmoon = Math.ceil(day / 7) * 7
+    const nextBloodmoon = Math.ceil(day / freq) * freq
     const daysRemaining = nextBloodmoon - day
-    const bloodmoonNumber = Math.ceil(day / 7)
+    const bloodmoonNumber = Math.ceil(day / freq)
 
     if (!daysRemaining) {
       await interaction.reply(`Blood moon number ${bloodmoonNumber} tonight, HOLD ON TO YOUR BUTTS!`)
