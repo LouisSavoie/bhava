@@ -10,7 +10,7 @@ Bhava is an all-rounder Discord bot
 
 `/ping` Pings the bot to check if it's responding
 
-`/bloodmoon` *`days` Calculates when the next blood moon will rise in 7 Days to Die
+`/bloodmoon` *`days` `freq` Calculates when the next blood moon will rise in 7 Days to Die
 
 *= Required Option
 
