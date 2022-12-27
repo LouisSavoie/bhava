@@ -1,6 +1,6 @@
 export const log = {}
 
-function timestamp() {
+function timestamp () {
   const now = new Date()
   return `${now.toLocaleDateString()} ${now.toLocaleTimeString()}:`
 }
