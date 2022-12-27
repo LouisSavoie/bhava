@@ -21,5 +21,5 @@ function login () {
   })
 }
 
-registerCommands()
+await registerCommands()
 login()
