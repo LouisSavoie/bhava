@@ -1,8 +1,8 @@
-import { Mongoose } from 'mongoose'
+import * as mongoose from 'mongoose'
 
-const thingSchema = new Mongoose.Schema({
+const thingSchema = new mongoose.Schema({
   serverID: String,
   name: String
 })
 
-export const Thing = Mongoose.model('Thing', thingSchema)
+export const Thing = mongoose.model('Thing', thingSchema)

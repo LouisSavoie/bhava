@@ -34,3 +34,7 @@ log.interactionComplete = () => {
 log.newThing = (newThing) => {
   console.log(`${timestamp()} New Thing created:\n${newThing}`)
 }
+
+log.foundThing = (foundThing) => {
+  console.log(`${timestamp()} Found Thing:\n${foundThing}`)
+}
