@@ -16,7 +16,7 @@ export const newThing = {
 export const newThingRes = {
   async execute (interaction) {
     const alreadyExists = await db.findOneThing(interaction)
-    
+
     if (alreadyExists) {
       await interaction.reply(`${alreadyExists.name} already exists`)
       return

@@ -1,6 +1,6 @@
 import { ping, pingRes } from './commands/ping.js'
 import { bloodmoon, bloodmoonRes } from './commands/bloodmoon.js'
-import { newThing, newThingRes } from "./commands/newThing.js";
+import { newThing, newThingRes } from './commands/newThing.js'
 
 export const testServerCommands = [
 

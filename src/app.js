@@ -22,7 +22,7 @@ function login () {
   })
 }
 
-function connectDB() {
+function connectDB () {
   try {
     mongoose.connect(process.env.BHAVA_MONGODBURI)
     mongoose.set('strictQuery', true)
