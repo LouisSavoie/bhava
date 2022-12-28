@@ -13,6 +13,10 @@ log.loggedIn = (tag) => {
   console.log(`${timestamp()} Logged in as ${tag}`)
 }
 
+log.mongooseConnected = () => {
+  console.log(`${timestamp()} Mongoose connected to MongoDB`)
+}
+
 log.interaction = (interaction) => {
   console.log(`${timestamp()} "${interaction.member.nickname}"(${interaction.member.user.tag}) on ${interaction.member.guild.name} (${interaction.member.guild.id}) used /${interaction.commandName} ${interaction.options._hoistedOptions.map(o => `${o.name}:${o.value}`)}`)
 }
