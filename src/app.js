@@ -1,4 +1,5 @@
 import { Client } from 'discord.js'
+import * as mongoose from 'mongoose'
 import { registerCommands } from './commandRegister.js'
 import { responses } from './index.js'
 import { log } from './modules/log.js'
@@ -21,5 +22,16 @@ function login () {
   })
 }
 
+function connectDB () {
+  try {
+    mongoose.connect(process.env.BHAVA_MONGODBURI)
+    mongoose.set('strictQuery', true)
+    log.mongooseConnected()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+connectDB()
 await registerCommands()
 login()
