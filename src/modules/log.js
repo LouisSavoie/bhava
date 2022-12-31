@@ -38,3 +38,11 @@ log.newThing = (newThing) => {
 log.foundThing = (foundThing) => {
   console.log(`${timestamp()} Found Thing:\n${foundThing}`)
 }
+
+log.newUser = (newUser) => {
+  console.log(`${timestamp()} New User created:\n${newUser}`)
+}
+
+log.foundUser = (foundUser) => {
+  console.log(`${timestamp()} Found User:\n${foundUser}`)
+}
