@@ -46,3 +46,11 @@ log.newUser = (newUser) => {
 log.foundUser = (foundUser) => {
   console.log(`${timestamp()} Found User:\n${foundUser}`)
 }
+
+log.newZone = (newZone) => {
+  console.log(`${timestamp()} New Zone created:\n${newZone}`)
+}
+
+log.foundZone = (foundZone) => {
+  console.log(`${timestamp()} Found Zone:\n${foundZone}`)
+}

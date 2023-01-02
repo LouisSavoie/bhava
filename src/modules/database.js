@@ -1,6 +1,8 @@
 import { Thing } from '../models/thing.js'
 import { User } from '../models/user.js'
+import { Zone } from '../models/rpg/zone.js'
 import { log } from './log.js'
+import { zones } from './rpg/map.js'
 
 export const db = {}
 
@@ -56,6 +58,40 @@ db.findOneUser = async (userID) => {
     })
     log.foundUser(foundUser)
     return foundUser
+  } catch (error) {
+    console.log(error)
+    return 'error'
+  }
+}
+
+// RPG
+db.newZone = async (interaction, zoneName) => {
+  const zone = zones.getZone(zoneName)
+  try {
+    const newZone = await Zone.create({
+      serverID: interaction.member.guild.id,
+      displayName: zone.displayName,
+      name: zone.name,
+      resources: zone.resources,
+      inventory: zone.inventory,
+      monsters: zone.monsters
+    })
+    log.newZone(newZone)
+    return newZone
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+db.findOneZone = async (interaction, zoneName) => {
+  try {
+    const foundZone = await Zone.findOne({
+      serverID: interaction.member.guild.id,
+      name: zoneName
+    })
+    log.foundZone(foundZone)
+    return foundZone
   } catch (error) {
     console.log(error)
     return 'error'

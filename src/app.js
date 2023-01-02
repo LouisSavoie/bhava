@@ -35,3 +35,20 @@ function connectDB () {
 connectDB()
 await registerCommands()
 login()
+
+// testing
+// import { map, zones } from "./modules/rpg/map.js";
+// import { db } from "./modules/database.js";
+// const fakeInteraction = {
+//   member: {
+//     guild: {
+//       id: '170320958589108224'
+//     }
+//   }
+// }
+// function runTest () {
+// // console.log(zones[map[405]].resources.includes('wood'))
+// db.newZone(fakeInteraction, 'forest')
+// // db.findOneZone(fakeInteraction, 'forest')
+// }
+// runTest()
