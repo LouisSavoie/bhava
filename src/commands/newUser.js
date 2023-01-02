@@ -15,7 +15,7 @@ export const newUser = {
 
 export const newUserRes = {
   async execute (interaction) {
-    const alreadyExists = await db.findOneUser(interaction)
+    const alreadyExists = await db.findOneUser(interaction.options.get('user').value)
     const nickname = interaction.options.get('user').member.nickname
 
     if (alreadyExists) {

@@ -3,10 +3,12 @@ import { bloodmoon, bloodmoonRes } from './commands/bloodmoon.js'
 import { newThing, newThingRes } from './commands/newThing.js'
 import { newUser, newUserRes } from './commands/newUser.js'
 import { char, charRes } from './commands/char.js'
+import { charName, charNameRes } from './commands/charName.js'
 
 export const testServerCommands = [
   newUser,
-  char
+  char,
+  charName
 ]
 
 export const globalCommands = [
@@ -20,5 +22,6 @@ export const responses = {
   bloodmoon: bloodmoonRes,
   newthing: newThingRes,
   newuser: newUserRes,
-  char: charRes
+  char: charRes,
+  charname: charNameRes
 }

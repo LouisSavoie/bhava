@@ -15,7 +15,7 @@ export const char = {
 
 export const charRes = {
   async execute (interaction) {
-    const foundUser = await db.findOneUser(interaction)
+    const foundUser = await db.findOneUser(interaction.options.get('user').value)
     const nickname = interaction.options.get('user').member.nickname
 
     if (!foundUser) {
@@ -24,7 +24,7 @@ export const charRes = {
     }
 
     if (foundUser === 'error') {
-      await interaction.reply(`An error occured and @${nickname} was not created`)
+      await interaction.reply(`An error occured and @${nickname} was not found`)
       return
     }
 

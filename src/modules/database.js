@@ -49,10 +49,10 @@ db.newUser = async (interaction) => {
   }
 }
 
-db.findOneUser = async (interaction) => {
+db.findOneUser = async (userID) => {
   try {
     const foundUser = await User.findOne({
-      id: interaction.options.get('user').value
+      id: userID
     })
     log.foundUser(foundUser)
     return foundUser
