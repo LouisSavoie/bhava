@@ -5,12 +5,14 @@ import { newUser, newUserRes } from './commands/newUser.js'
 import { char, charRes } from './commands/rpg/char.js'
 import { charName, charNameRes } from './commands/rpg/charName.js'
 import { move, moveRes } from './commands/rpg/move.js'
+import { zone, zoneRes } from './commands/rpg/zone.js'
 
 export const testServerCommands = [
   newUser,
   char,
   charName,
-  move
+  move,
+  zone
 ]
 
 export const globalCommands = [
@@ -26,5 +28,6 @@ export const responses = {
   newuser: newUserRes,
   char: charRes,
   charname: charNameRes,
-  move: moveRes
+  move: moveRes,
+  zone: zoneRes
 }
