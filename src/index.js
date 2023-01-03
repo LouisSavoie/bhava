@@ -2,13 +2,15 @@ import { ping, pingRes } from './commands/ping.js'
 import { bloodmoon, bloodmoonRes } from './commands/bloodmoon.js'
 import { newThing, newThingRes } from './commands/newThing.js'
 import { newUser, newUserRes } from './commands/newUser.js'
-import { char, charRes } from './commands/char.js'
-import { charName, charNameRes } from './commands/charName.js'
+import { char, charRes } from './commands/rpg/char.js'
+import { charName, charNameRes } from './commands/rpg/charName.js'
+import { move, moveRes } from './commands/rpg/move.js'
 
 export const testServerCommands = [
   newUser,
   char,
-  charName
+  charName,
+  move
 ]
 
 export const globalCommands = [
@@ -23,5 +25,6 @@ export const responses = {
   newthing: newThingRes,
   newuser: newUserRes,
   char: charRes,
-  charname: charNameRes
+  charname: charNameRes,
+  move: moveRes
 }

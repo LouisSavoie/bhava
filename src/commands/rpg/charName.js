@@ -1,4 +1,4 @@
-import { db } from '../modules/database.js'
+import { db } from '../../modules/database.js'
 
 export const charName = {
   name: 'charname',
