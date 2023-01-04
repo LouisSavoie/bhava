@@ -1,10 +1,11 @@
 import { db } from '../../modules/database.js'
 import { map, zones } from '../../modules/rpg/map.js'
+import { userChecks } from '../../modules/userChecks.js'
 import dedent from 'dedent'
 
 export const char = {
   name: 'char',
-  description: 'Displays character info',
+  description: '(RPG) Displays character info',
   options: [
     {
       name: 'user',
@@ -17,31 +18,18 @@ export const char = {
 
 export const charRes = {
   async execute (interaction) {
-    const foundUser = await db.findOneUser(interaction.options.get('user').value)
-    const nickname = interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username
+    const user = await userChecks.spawnCheck(interaction)
+    if (!user) { return }
 
-    if (!foundUser) {
-      await interaction.reply({
-        ephemeral: true,
-        content: `@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`
-      })
-      return
-    }
+    const mentionedUser = await userChecks.mentionedUserCheck(interaction)
+    if (!mentionedUser) { return }
 
-    if (foundUser === 'error') {
-      await interaction.reply({
-        ephemeral: true,
-        content: `An error occured and @${nickname} was not found`
-      })
-      return
-    }
-
-    if (foundUser.id === interaction.member.id) {
+    if (mentionedUser.id === user.id) {
       await interaction.reply({
         ephemeral: true,
         content: dedent(`
-        Name: ${foundUser.char.name}
-        Zone: ${zones[map[foundUser.char.zone]].displayName}
+        Name: ${mentionedUser.char.name}
+        Zone: ${zones[map[mentionedUser.char.zone]].displayName}
         `)
       })
       return
@@ -49,7 +37,7 @@ export const charRes = {
 
     await interaction.reply({
       ephemeral: true,
-      content: `${foundUser.char.name} is stronk and stuff (Placeholder vague description)`
+      content: `${mentionedUser.char.name} is stronk and stuff (Placeholder vague description)`
     })
   }
 }

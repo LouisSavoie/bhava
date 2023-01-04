@@ -1,4 +1,4 @@
-import { db } from '../modules/database.js'
+import { userChecks } from '../modules/userChecks.js'
 
 export const newUser = {
   name: 'newuser',
@@ -15,34 +15,8 @@ export const newUser = {
 
 export const newUserRes = {
   async execute (interaction) {
-    const alreadyExists = await db.findOneUser(interaction.options.get('user').value)
-    const nickname = interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username
-
-    if (alreadyExists) {
-      await interaction.reply({
-        ephemeral: true,
-        content: `@${nickname} already exists`
-      })
-      return
-    }
-
-    if (alreadyExists === 'error') {
-      await interaction.reply({
-        ephemeral: true,
-        content: `An error occured and @${nickname} was not created`
-      })
-      return
-    }
-
-    const res = await db.newUser(interaction)
-
-    if (!res) {
-      await interaction.reply({
-        ephemeral: true,
-        content: `An error occured and @${nickname} was not created`
-      })
-      return
-    }
+    const user = await userChecks.createMentionedUserCheck(interaction)
+    if (!user) { return }
 
     await interaction.reply(`@${nickname} created`)
   }

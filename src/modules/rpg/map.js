@@ -1,6 +1,7 @@
 import { Zone } from '../../classes/zone.js'
 
 export const map = {
+  101: 'spwan',
   405: 'forest',
   504: 'swamp',
   505: 'field',
@@ -18,6 +19,7 @@ export const zones = {
   getZone: function (zoneName) {
     return new Zone(zones[zoneName].displayName, zones[zoneName].resources)
   },
+  spawn: { displayName: 'Spawn Island', resources: [] },
   forest: { displayName: 'Forest', resources: ['wood'] },
   swamp: { displayName: 'Swamp', resources: ['reeds'] },
   field: { displayName: 'Field', resources: [] },

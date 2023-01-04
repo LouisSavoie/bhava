@@ -10,6 +10,7 @@ const client = new Client({ intents: ['Guilds', 'GuildMessages'] })
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
+  // console.log(interaction)
   log.interaction(interaction)
   await responses[interaction.commandName].execute(interaction)
   log.interactionComplete()

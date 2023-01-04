@@ -1,9 +1,10 @@
 import { db } from '../../modules/database.js'
 import { map, zones } from '../../modules/rpg/map.js'
+import { userChecks } from '../../modules/userChecks.js'
 
 export const move = {
   name: 'move',
-  description: 'Moves your character',
+  description: '(RPG) Moves your character',
   options: [
     {
       name: 'direction',
@@ -22,42 +23,26 @@ export const move = {
 
 export const moveRes = {
   async execute (interaction) {
-    const foundUser = await db.findOneUser(interaction.user.id)
-    const nickname = interaction.member.nickname ? interaction.member.nickname : interaction.user.username
-
-    if (!foundUser) {
-      await interaction.reply({
-        ephemeral: true,
-        content: `@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`
-      })
-      return
-    }
-
-    if (foundUser === 'error') {
-      await interaction.reply({
-        ephemeral: true,
-        content: `An error occured and @${nickname} was not found`
-      })
-      return
-    }
+    const user = await userChecks.spawnCheck(interaction)
+    if (!user) { return }
 
     const direction = interaction.options.get('direction').value
     switch (direction) {
       case 'north':
-        foundUser.char.zone += 1
+        user.char.zone += 1
         break
       case 'east':
-        foundUser.char.zone += 100
+        user.char.zone += 100
         break
       case 'south':
-        foundUser.char.zone -= 1
+        user.char.zone -= 1
         break
       case 'west':
-        foundUser.char.zone -= 100
+        user.char.zone -= 100
         break
     }
 
-    const zone = zones[map[foundUser.char.zone]]
+    const zone = zones[map[user.char.zone]]
 
     if (!zone) {
       await interaction.reply({
@@ -67,17 +52,17 @@ export const moveRes = {
       return
     }
 
-    foundUser.save()
+    user.save()
 
-    const foundZone = await db.findOneZone(interaction, map[foundUser.char.zone])
+    const foundZone = await db.findOneZone(interaction, map[user.char.zone])
 
     if (!foundZone) {
-      await db.newZone(interaction, map[foundUser.char.zone])
+      await db.newZone(interaction, map[user.char.zone])
     }
 
     await interaction.reply({
       ephemeral: true,
-      content: `${foundUser.char.name} went ${direction} to the ${zone.displayName}`
+      content: `${user.char.name} went ${direction} to the ${zone.displayName}`
     })
   }
 }

@@ -34,14 +34,14 @@ db.findOneThing = async (interaction) => {
   }
 }
 
-db.newUser = async (interaction) => {
+db.newUser = async (user) => {
   try {
     const newUser = await User.create({
-      id: interaction.options.get('user').value,
-      tag: interaction.options.get('user').user.username + '#' + interaction.options.get('user').user.discriminator,
+      id: user.id,
+      tag: user.username + '#' + user.discriminator,
       char: {
-        name: interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username,
-        zone: 505
+        name: user.username,
+        zone: 101
       }
     })
     log.newUser(newUser)
