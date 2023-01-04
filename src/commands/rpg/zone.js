@@ -1,5 +1,5 @@
 import { db } from '../../modules/database.js'
-import { zones } from "../../modules/rpg/map.js";
+import { zones } from '../../modules/rpg/map.js'
 
 export const zone = {
   name: 'zone',
@@ -31,10 +31,10 @@ export const zoneRes = {
     const zoneExists = zones[interaction.options.get('zone').value.toLowerCase()]
 
     if (zoneExists) {
-      await interaction.reply(`That zone is unexplored`)
+      await interaction.reply('That zone is unexplored')
       return
     }
 
-    await interaction.reply(`That zone does not exist or it is spelled wrong`)
+    await interaction.reply('That zone does not exist or it is spelled wrong')
   }
 }

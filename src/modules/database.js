@@ -41,7 +41,7 @@ db.newUser = async (interaction) => {
       tag: interaction.options.get('user').user.username + '#' + interaction.options.get('user').user.discriminator,
       char: {
         name: interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username,
-        location: 505
+        zone: 505
       }
     })
     log.newUser(newUser)

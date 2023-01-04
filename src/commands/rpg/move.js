@@ -44,21 +44,21 @@ export const moveRes = {
     const direction = interaction.options.get('direction').value
     switch (direction) {
       case 'north':
-        foundUser.char.location += 1
-        break;
+        foundUser.char.zone += 1
+        break
       case 'east':
-        foundUser.char.location += 100
-        break;
+        foundUser.char.zone += 100
+        break
       case 'south':
-        foundUser.char.location -= 1
-        break;
+        foundUser.char.zone -= 1
+        break
       case 'west':
-        foundUser.char.location -= 100
-        break;
+        foundUser.char.zone -= 100
+        break
     }
 
-    const zone = zones[map[foundUser.char.location]]
-    
+    const zone = zones[map[foundUser.char.zone]]
+
     if (!zone) {
       await interaction.reply({
         ephemeral: true,
@@ -69,10 +69,10 @@ export const moveRes = {
 
     foundUser.save()
 
-    const foundZone = await db.findOneZone(interaction, map[foundUser.char.location])
+    const foundZone = await db.findOneZone(interaction, map[foundUser.char.zone])
 
     if (!foundZone) {
-      await db.newZone(interaction, map[foundUser.char.location])
+      await db.newZone(interaction, map[foundUser.char.zone])
     }
 
     await interaction.reply({

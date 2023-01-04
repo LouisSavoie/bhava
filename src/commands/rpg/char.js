@@ -41,7 +41,7 @@ export const charRes = {
         ephemeral: true,
         content: dedent(`
         Name: ${foundUser.char.name}
-        Zone: ${zones[map[foundUser.char.location]].displayName}
+        Zone: ${zones[map[foundUser.char.zone]].displayName}
         `)
       })
       return

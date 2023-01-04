@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   tag: String,
   char: {
     name: String,
-    location: Number
+    zone: Number
   }
 })
 
