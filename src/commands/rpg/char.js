@@ -1,4 +1,6 @@
 import { db } from '../../modules/database.js'
+import { map, zones } from '../../modules/rpg/map.js'
+import dedent from 'dedent'
 
 export const char = {
   name: 'char',
@@ -28,6 +30,19 @@ export const charRes = {
       return
     }
 
-    await interaction.reply(`${foundUser.char}`)
+    if (foundUser.id === interaction.member.id) {
+      await interaction.reply({
+        ephemeral: true,
+        content: dedent(`
+        Name: ${foundUser.char.name}
+        Zone: ${zones[map[foundUser.char.location]].displayName}
+        `)
+      })
+      return
+    }
+    await interaction.reply({
+      ephemeral: true,
+      content: `${foundUser.char.name} is stronk`
+    })
   }
 }
