@@ -18,7 +18,7 @@ export const char = {
 export const charRes = {
   async execute (interaction) {
     const foundUser = await db.findOneUser(interaction.options.get('user').value)
-    const nickname = interaction.options.get('user').member.nickname
+    const nickname = interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username
 
     if (!foundUser) {
       await interaction.reply(`@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`)

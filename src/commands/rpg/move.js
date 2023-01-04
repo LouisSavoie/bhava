@@ -23,7 +23,7 @@ export const move = {
 export const moveRes = {
   async execute (interaction) {
     const foundUser = await db.findOneUser(interaction.user.id)
-    const nickname = interaction.member.nickname
+    const nickname = interaction.member.nickname ? interaction.member.nickname : interaction.user.username
 
     if (!foundUser) {
       await interaction.reply(`@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`)
