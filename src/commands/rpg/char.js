@@ -21,12 +21,18 @@ export const charRes = {
     const nickname = interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username
 
     if (!foundUser) {
-      await interaction.reply(`@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`
+      })
       return
     }
 
     if (foundUser === 'error') {
-      await interaction.reply(`An error occured and @${nickname} was not found`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and @${nickname} was not found`
+      })
       return
     }
 
@@ -40,9 +46,10 @@ export const charRes = {
       })
       return
     }
+
     await interaction.reply({
       ephemeral: true,
-      content: `${foundUser.char.name} is stronk`
+      content: `${foundUser.char.name} is stronk and stuff (Placeholder vague description)`
     })
   }
 }

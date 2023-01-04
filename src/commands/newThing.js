@@ -18,19 +18,28 @@ export const newThingRes = {
     const alreadyExists = await db.findOneThing(interaction)
 
     if (alreadyExists) {
-      await interaction.reply(`${alreadyExists.name} already exists`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `${alreadyExists.name} already exists`
+      })
       return
     }
 
     if (alreadyExists === 'error') {
-      await interaction.reply(`An error occured and ${interaction.options.get('name').value} was not created`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and ${interaction.options.get('name').value} was not created`
+      })
       return
     }
 
     const res = await db.newThing(interaction)
 
     if (!res) {
-      await interaction.reply(`An error occured and ${interaction.options.get('name').value} was not created`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and ${interaction.options.get('name').value} was not created`
+      })
       return
     }
 

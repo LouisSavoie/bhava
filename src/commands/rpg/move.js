@@ -26,12 +26,18 @@ export const moveRes = {
     const nickname = interaction.member.nickname ? interaction.member.nickname : interaction.user.username
 
     if (!foundUser) {
-      await interaction.reply(`@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `@${nickname} does not exist, use \`/newuser @${nickname}\` to add them to the database`
+      })
       return
     }
 
     if (foundUser === 'error') {
-      await interaction.reply(`An error occured and @${nickname} was not found`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and @${nickname} was not found`
+      })
       return
     }
 
@@ -54,7 +60,10 @@ export const moveRes = {
     const zone = zones[map[foundUser.char.location]]
     
     if (!zone) {
-      await interaction.reply('There is nothing of interest in that direction')
+      await interaction.reply({
+        ephemeral: true,
+        content: 'There is nothing of interest in that direction'
+      })
       return
     }
 
@@ -66,6 +75,9 @@ export const moveRes = {
       await db.newZone(interaction, map[foundUser.char.location])
     }
 
-    await interaction.reply(`${foundUser.char.name} went ${direction} to the ${zone.displayName}`)
+    await interaction.reply({
+      ephemeral: true,
+      content: `${foundUser.char.name} went ${direction} to the ${zone.displayName}`
+    })
   }
 }

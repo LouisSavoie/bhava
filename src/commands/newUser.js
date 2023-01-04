@@ -19,19 +19,28 @@ export const newUserRes = {
     const nickname = interaction.options.get('user').member.nickname ? interaction.options.get('user').member.nickname : interaction.options.get('user').user.username
 
     if (alreadyExists) {
-      await interaction.reply(`@${nickname} already exists`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `@${nickname} already exists`
+      })
       return
     }
 
     if (alreadyExists === 'error') {
-      await interaction.reply(`An error occured and @${nickname} was not created`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and @${nickname} was not created`
+      })
       return
     }
 
     const res = await db.newUser(interaction)
 
     if (!res) {
-      await interaction.reply(`An error occured and @${nickname} was not created`)
+      await interaction.reply({
+        ephemeral: true,
+        content: `An error occured and @${nickname} was not created`
+      })
       return
     }
 
