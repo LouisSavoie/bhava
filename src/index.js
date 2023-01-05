@@ -9,6 +9,8 @@ import { zone, zoneRes } from './commands/rpg/zone.js'
 import { spawn, spawnRes } from './commands/rpg/spawn.js'
 import { look, lookRes } from './commands/rpg/look.js'
 
+export const devServerCommands = []
+
 export const testServerCommands = [
   newUser,
   char,
