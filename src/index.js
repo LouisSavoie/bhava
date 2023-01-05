@@ -7,6 +7,7 @@ import { charName, charNameRes } from './commands/rpg/charName.js'
 import { move, moveRes } from './commands/rpg/move.js'
 import { zone, zoneRes } from './commands/rpg/zone.js'
 import { spawn, spawnRes } from './commands/rpg/spawn.js'
+import { look, lookRes } from './commands/rpg/look.js'
 
 export const testServerCommands = [
   newUser,
@@ -14,7 +15,8 @@ export const testServerCommands = [
   charName,
   move,
   zone,
-  spawn
+  spawn,
+  look
 ]
 
 export const globalCommands = [
@@ -32,5 +34,6 @@ export const responses = {
   charname: charNameRes,
   move: moveRes,
   zone: zoneRes,
-  spawn: spawnRes
+  spawn: spawnRes,
+  look: lookRes
 }

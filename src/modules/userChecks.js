@@ -1,4 +1,4 @@
-import { db } from "./database.js"
+import { db } from './database.js'
 
 export const userChecks = {}
 
@@ -15,7 +15,7 @@ userChecks.spawnCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: `A database error occured, please try again later`
+      content: 'A database error occured, please try again later'
     })
     return false
   }
@@ -45,7 +45,7 @@ userChecks.userCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: `A database error occured, please try again later`
+      content: 'A database error occured, please try again later'
     })
     return false
   }
@@ -66,7 +66,7 @@ userChecks.mentionedUserCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: `A database error occured, please try again later`
+      content: 'A database error occured, please try again later'
     })
     return false
   }
@@ -82,7 +82,7 @@ userChecks.createMentionedUserCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: `A database error occured, please try again later`
+      content: 'A database error occured, please try again later'
     })
     return false
   }

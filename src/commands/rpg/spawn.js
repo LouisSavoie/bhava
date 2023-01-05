@@ -5,7 +5,7 @@ import dedent from 'dedent'
 
 export const spawn = {
   name: 'spawn',
-  description: '(RPG) Displays useful info and teleports your character to the realm',
+  description: '(RPG) Displays useful info and teleports your character to the realm'
 }
 
 export const spawnRes = {

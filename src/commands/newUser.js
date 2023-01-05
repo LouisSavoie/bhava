@@ -18,6 +18,6 @@ export const newUserRes = {
     const user = await userChecks.createMentionedUserCheck(interaction)
     if (!user) { return }
 
-    await interaction.reply(`@${nickname} created`)
+    await interaction.reply('User created')
   }
 }
