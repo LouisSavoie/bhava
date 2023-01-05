@@ -19,10 +19,10 @@ export const zones = {
   getZone: function (zoneName) {
     return new Zone(zones[zoneName].displayName, zones[zoneName].resources)
   },
-  spawn: { displayName: 'Spawn Island', resources: [] },
-  forest: { displayName: 'Forest', resources: ['wood'] },
-  swamp: { displayName: 'Swamp', resources: ['reeds'] },
-  field: { displayName: 'Field', resources: [] },
-  mountain: { displayName: 'Mountain', resources: ['stone'] },
-  lake: { displayName: 'Lake', resources: [] }
+  spawn: { displayName: 'Spawn Island' },
+  forest: { displayName: 'Forest', resources: ['wood', 'branch'], monsters: ['troll'] },
+  swamp: { displayName: 'Swamp', resources: ['reeds', 'mud'], monsters: ['ooze'] },
+  field: { displayName: 'Field', resources: [], monsters: ['rat', 'rabbit'] },
+  mountain: { displayName: 'Mountain', resources: ['stone'], monsters: ['giant'] },
+  lake: { displayName: 'Lake', resources: ['watet'], monsters: ['serpents'] }
 }
