@@ -8,12 +8,27 @@ Bhava is an all-rounder Discord bot
 
 **Misc**
 
+*= Required Option
+
 `/ping` Pings the bot to check if it's responding
 
 `/bloodmoon` *`days` `freq` Calculates when the next blood moon will rise in 7 Days to Die
 
-*= Required Option
+`/newuser` *`user` Creates a new User
 
+**RPG**
+
+`/spawn` Displays useful info and teleports your character to the realm
+
+`/char` *`user` Displays character info
+
+`/charname` *`name` Changes your character's name
+
+`/look` Describes what you see around you
+
+`/zone` *`zone` Displays zone info
+
+`/move` *`direction` Moves your character
 
 ## Development
 
