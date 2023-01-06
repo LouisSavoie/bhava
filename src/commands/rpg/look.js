@@ -22,7 +22,7 @@ export const lookRes = {
     if (foundZone === 'error') {
       await interaction.reply({
         ephemeral: true,
-        content: 'A database error occured, please try again later'
+        content: 'A database error occurred, please try again later'
       })
       return
     }

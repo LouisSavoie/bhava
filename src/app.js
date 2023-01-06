@@ -6,6 +6,9 @@ import { log } from './modules/log.js'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+const TOKEN = process.env.BHAVA_TESTFLAG === false ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
+const MONGODBURI = process.env.BHAVA_TESTFLAG === false ? process.env.BHAVATESTER_MONGODBURI : process.env.BHAVA_MONGODBURI
+
 const client = new Client({ intents: ['Guilds', 'GuildMessages'] })
 
 client.on('interactionCreate', async interaction => {
@@ -17,7 +20,7 @@ client.on('interactionCreate', async interaction => {
 })
 
 function login () {
-  client.login(process.env.BHAVA_TOKEN)
+  client.login(TOKEN)
   client.on('ready', () => {
     log.loggedIn(client.user.tag)
     client.user.setActivity('for /help', { type: 3 })
@@ -26,7 +29,7 @@ function login () {
 
 function connectDB () {
   try {
-    mongoose.connect(process.env.BHAVA_MONGODBURI)
+    mongoose.connect(MONGODBURI)
     mongoose.set('strictQuery', true)
     log.mongooseConnected()
   } catch (error) {
