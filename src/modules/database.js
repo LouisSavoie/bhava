@@ -12,12 +12,15 @@ db.newThing = async (interaction) => {
       serverID: interaction.member.guild.id,
       name: interaction.options.get('name').value
     })
-    log.newThing(newThing)
-    return newThing
+    if (newThing) {
+      log.newThing(newThing)
+      return newThing
+    }
   } catch (error) {
     console.log(error)
-    return null
+    return 'error'
   }
+  return null
 }
 
 db.findOneThing = async (interaction) => {
@@ -26,12 +29,15 @@ db.findOneThing = async (interaction) => {
       serverID: interaction.member.guild.id,
       name: interaction.options.get('name').value
     })
-    log.foundThing(foundThing)
-    return foundThing
+    if (foundThing) {
+      log.foundThing(foundThing)
+      return foundThing
+    }
   } catch (error) {
     console.log(error)
     return 'error'
   }
+  return null
 }
 
 db.newUser = async (user) => {
@@ -44,12 +50,15 @@ db.newUser = async (user) => {
         zone: 101
       }
     })
-    log.newUser(newUser)
-    return newUser
+    if (newUser) {
+      log.newUser(newUser)
+      return newUser
+    }
   } catch (error) {
     console.log(error)
-    return null
+    return 'error'
   }
+  return null
 }
 
 db.findOneUser = async (userID) => {
@@ -57,12 +66,15 @@ db.findOneUser = async (userID) => {
     const foundUser = await User.findOne({
       id: userID
     })
-    log.foundUser(foundUser)
-    return foundUser
+    if (foundUser) {
+      log.foundUser(foundUser)
+      return foundUser
+    }
   } catch (error) {
     console.log(error)
     return 'error'
   }
+  return null
 }
 
 // RPG
@@ -77,12 +89,15 @@ db.newZone = async (interaction, zoneName) => {
       inventory: zone.inventory,
       monsters: zone.monsters
     })
-    log.newZone(newZone)
-    return newZone
+    if (newZone) {
+      log.newZone(newZone)
+      return newZone
+    }
   } catch (error) {
     console.log(error)
-    return null
+    return 'error'
   }
+  return null
 }
 
 db.findOneZone = async (interaction, zoneName) => {
@@ -91,10 +106,13 @@ db.findOneZone = async (interaction, zoneName) => {
       serverID: interaction.member.guild.id,
       name: zoneName
     })
-    log.foundZone(foundZone)
-    return foundZone
+    if (foundZone) {
+      log.foundZone(foundZone)
+      return foundZone
+    }
   } catch (error) {
     console.log(error)
     return 'error'
   }
+  return null
 }

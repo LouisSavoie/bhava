@@ -24,5 +24,5 @@ export const zones = {
   swamp: { displayName: 'Swamp', resources: ['reeds', 'mud'], monsters: ['ooze'] },
   field: { displayName: 'Field', resources: [], monsters: ['rat', 'rabbit'] },
   mountain: { displayName: 'Mountain', resources: ['stone'], monsters: ['giant'] },
-  lake: { displayName: 'Lake', resources: ['watet'], monsters: ['serpents'] }
+  lake: { displayName: 'Lake', resources: ['water'], monsters: ['serpents'] }
 }

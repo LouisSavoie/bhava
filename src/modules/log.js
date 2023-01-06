@@ -40,11 +40,11 @@ log.foundThing = (foundThing) => {
 }
 
 log.newUser = (newUser) => {
-  console.log(`${timestamp()} New User created: ${newUser.tag}, server: ${newUser.serverID}`)
+  console.log(`${timestamp()} New User created: ${newUser.tag}`)
 }
 
 log.foundUser = (foundUser) => {
-  console.log(`${timestamp()} Found User: ${foundUser.tag}, server: ${foundUser.serverID}`)
+  console.log(`${timestamp()} Found User: ${foundUser.tag}`)
 }
 
 log.newZone = (newZone) => {
