@@ -10,6 +10,8 @@ Bhava is an all-rounder Discord bot
 
 **Misc**
 
+`/help` Displays useful information to get you started using Bhava
+
 `/feedback` Displays a link to the feedback form
 
 `/ping` Pings the bot to check if it's responding

@@ -20,6 +20,7 @@ function login () {
   client.login(process.env.BHAVA_TOKEN)
   client.on('ready', () => {
     log.loggedIn(client.user.tag)
+    client.user.setActivity('for /help', { type: 3 })
   })
 }
 
