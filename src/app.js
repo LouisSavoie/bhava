@@ -6,8 +6,8 @@ import { log } from './modules/log.js'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-const TOKEN = process.env.BHAVA_TESTFLAG === false ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
-const MONGODBURI = process.env.BHAVA_TESTFLAG === false ? process.env.BHAVATESTER_MONGODBURI : process.env.BHAVA_MONGODBURI
+const TOKEN = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
+const MONGODBURI = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_MONGODBURI : process.env.BHAVA_MONGODBURI
 
 const client = new Client({ intents: ['Guilds', 'GuildMessages'] })
 
