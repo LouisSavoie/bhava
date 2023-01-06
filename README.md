@@ -6,9 +6,11 @@ Bhava is an all-rounder Discord bot
 
 ## Commands
 
+*= Required Option
+
 **Misc**
 
-*= Required Option
+`/feedback` Displays a link to the feedback form
 
 `/ping` Pings the bot to check if it's responding
 
@@ -31,5 +33,7 @@ Bhava is an all-rounder Discord bot
 `/move` *`direction` Moves your character
 
 ## Development
+
+[Feedback Form](https://formsubmit.co/el/dekivo/?subject=Bhava+Feedback)
 
 [View Trello Board](https://trello.com/b/fcvZAtub/bhava)
