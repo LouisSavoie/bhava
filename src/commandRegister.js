@@ -5,10 +5,10 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 
-const TOKEN = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
-const APPID = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_APPID : process.env.BHAVA_APPID
-const DEVSERVERID = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_DEVSERVERID : process.env.BHAVA_DEVSERVERID
-const TESTSERVERID = process.env.BHAVA_TESTFLAG === true ? process.env.BHAVATESTER_TESTSERVERID : process.env.BHAVA_TESTSERVERID
+const TOKEN = process.argv[2] === 'test' ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
+const APPID = process.argv[2] === 'test' ? process.env.BHAVATESTER_APPID : process.env.BHAVA_APPID
+const DEVSERVERID = process.argv[2] === 'test' ? process.env.BHAVATESTER_DEVSERVERID : process.env.BHAVA_DEVSERVERID
+const TESTSERVERID = process.argv[2] === 'test' ? process.env.BHAVATESTER_TESTSERVERID : process.env.BHAVA_TESTSERVERID
 
 const rest = new REST({ version: '10' }).setToken(TOKEN)
 
