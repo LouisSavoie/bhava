@@ -9,6 +9,7 @@ import { zone, zoneRes } from './commands/rpg/zone.js'
 import { spawn, spawnRes } from './commands/rpg/spawn.js'
 import { look, lookRes } from './commands/rpg/look.js'
 import { feedback, feedbackRes } from './commands/feedback.js'
+import { testMessage, testMessageRes } from './commands/testMessage.js'
 
 export const devServerCommands = [
   newUser,
@@ -17,7 +18,8 @@ export const devServerCommands = [
   move,
   zone,
   spawn,
-  look
+  look,
+  testMessage
 ]
 
 export const testServerCommands = [
@@ -39,6 +41,7 @@ export const globalCommands = [
 export const responses = {
   ping: pingRes,
   feedback: feedbackRes,
+  testmessage: testMessageRes,
   bloodmoon: bloodmoonRes,
   newthing: newThingRes,
   newuser: newUserRes,
