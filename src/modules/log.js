@@ -19,10 +19,10 @@ log.mongooseConnected = () => {
   console.log(`${timestamp()} Mongoose connected to MongoDB`)
 }
 
-// INTERATIONS
+// INTERACTIONS
 
 log.interaction = (interaction) => {
-  console.log(`${timestamp()} "${interaction.member.nickname}"(${interaction.member.user.tag}) on ${interaction.member.guild.name} (${interaction.member.guild.id}) used /${interaction.commandName} ${interaction.options._hoistedOptions.map(o => `${o.name}:${o.value}`)}`)
+  console.log(`${timestamp()} "${interaction.member.nickname ? interaction.member.nickname : interaction.user.username}"(${interaction.member.user.tag}) on ${interaction.member.guild.name} (${interaction.member.guild.id}) used /${interaction.commandName} ${interaction.options._hoistedOptions.map(o => `${o.name}:${o.value}`)}`)
 }
 
 log.interactionComplete = () => {
@@ -32,25 +32,25 @@ log.interactionComplete = () => {
 // DATABASE
 
 log.newThing = (newThing) => {
-  console.log(`${timestamp()} New Thing created:\n${newThing}`)
+  console.log(`${timestamp()} New Thing created: ${newThing.name}, server: ${newThing.serverID}`)
 }
 
 log.foundThing = (foundThing) => {
-  console.log(`${timestamp()} Found Thing:\n${foundThing}`)
+  console.log(`${timestamp()} Found Thing: ${foundThing.name}, server: ${foundThing.serverID}`)
 }
 
 log.newUser = (newUser) => {
-  console.log(`${timestamp()} New User created:\n${newUser}`)
+  console.log(`${timestamp()} New User created: ${newUser.tag}, server: ${newUser.serverID}`)
 }
 
 log.foundUser = (foundUser) => {
-  console.log(`${timestamp()} Found User:\n${foundUser}`)
+  console.log(`${timestamp()} Found User: ${foundUser.tag}, server: ${foundUser.serverID}`)
 }
 
 log.newZone = (newZone) => {
-  console.log(`${timestamp()} New Zone created:\n${newZone}`)
+  console.log(`${timestamp()} New Zone created: ${newZone.name}, server: ${newZone.serverID}`)
 }
 
 log.foundZone = (foundZone) => {
-  console.log(`${timestamp()} Found Zone:\n${foundZone}`)
+  console.log(`${timestamp()} Found Zone: ${foundZone.name},  server: ${foundZone.serverID}`)
 }

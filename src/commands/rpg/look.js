@@ -13,7 +13,11 @@ export const lookRes = {
     const user = await userChecks.spawnCheck(interaction)
     if (!user) { return }
 
-    const foundZone = await db.findOneZone(interaction, map[user.char.zone])
+    let foundZone = await db.findOneZone(interaction, map[user.char.zone])
+
+    if (!foundZone) {
+      foundZone = await db.newZone(interaction, map[user.char.zone])
+    }
 
     if (foundZone === 'error') {
       await interaction.reply({
