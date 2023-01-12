@@ -22,7 +22,7 @@ export const zones = {
   spawn: { displayName: 'Spawn Island' },
   forest: { displayName: 'Forest', resources: ['wood', 'branch'], monsters: ['troll'] },
   swamp: { displayName: 'Swamp', resources: ['reeds', 'mud'], monsters: ['ooze'] },
-  field: { displayName: 'Field', resources: [], monsters: ['rat', 'rabbit'] },
+  field: { displayName: 'Field', resources: [], monsters: ['rat', 'rabbit', 'snake'] },
   mountain: { displayName: 'Mountain', resources: ['stone'], monsters: ['giant'] },
   lake: { displayName: 'Lake', resources: ['water'], monsters: ['serpents'] }
 }

@@ -2,6 +2,7 @@ import dedent from 'dedent'
 import { db } from '../../modules/database.js'
 import { map } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
+import { stringify } from '../../modules/stringify.js'
 
 export const look = {
   name: 'look',
@@ -30,9 +31,9 @@ export const lookRes = {
     await interaction.reply({
       ephemeral: true,
       content: dedent(`
-      The ${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + foundZone.resources}
-      It ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + foundZone.monsters}
-      ${!foundZone.inventory.length ? 'There is nothing' : 'There is ' + foundZone.inventory} on the ground here
+      The ${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(foundZone.resources)}
+      It ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(foundZone.monsters)}
+      ${!foundZone.inventory.length ? 'There is nothing' : 'There is ' + stringify.arrayAsList(foundZone.inventory)} on the ground here
       `)
     })
   }

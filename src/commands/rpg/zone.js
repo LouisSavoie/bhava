@@ -1,6 +1,7 @@
 import { db } from '../../modules/database.js'
 import { zones } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
+import { stringify } from '../../modules/stringify.js'
 
 export const zone = {
   name: 'zone',
@@ -33,7 +34,7 @@ export const zoneRes = {
     if (foundZone) {
       await interaction.reply({
         ephemeral: true,
-        content: `${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + foundZone.resources} and ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + foundZone.monsters}`
+        content: `${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(foundZone.resources)} and ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(foundZone.monsters)}`
       })
       return
     }
