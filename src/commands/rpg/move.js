@@ -12,10 +12,10 @@ export const move = {
       type: 3,
       required: true,
       choices: [
-        { name: 'North', value: 'north' },
-        { name: 'East', value: 'east' },
-        { name: 'South', value: 'south' },
-        { name: 'West', value: 'west' }
+        { name: 'north', value: 'north' },
+        { name: 'east', value: 'east' },
+        { name: 'south', value: 'south' },
+        { name: 'west', value: 'west' }
       ]
     }
   ]
