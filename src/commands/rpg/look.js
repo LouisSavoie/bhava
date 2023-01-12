@@ -1,7 +1,7 @@
 import dedent from 'dedent'
 import { db } from '../../modules/database.js'
 import { map } from '../../modules/rpg/map.js'
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 
 export const look = {
   name: 'look',
@@ -10,7 +10,7 @@ export const look = {
 
 export const lookRes = {
   async execute (interaction) {
-    const user = await userChecks.spawnCheck(interaction)
+    const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
     let foundZone = await db.findOneZone(interaction, map[user.char.zone])

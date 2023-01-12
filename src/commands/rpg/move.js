@@ -1,6 +1,6 @@
 import { db } from '../../modules/database.js'
 import { map, zones } from '../../modules/rpg/map.js'
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 
 export const move = {
   name: 'move',
@@ -23,7 +23,7 @@ export const move = {
 
 export const moveRes = {
   async execute (interaction) {
-    const user = await userChecks.spawnCheck(interaction)
+    const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
     const direction = interaction.options.get('direction').value

@@ -1,13 +1,11 @@
 import { Client } from 'discord.js'
 import * as mongoose from 'mongoose'
-import { registerCommands } from './commandRegister.js'
-import { responses } from './index.js'
+import { registerCommands } from './modules/commandRegister.js'
+import { responses } from './modules/commandIndex.js'
 import { log } from './modules/log.js'
-import * as dotenv from 'dotenv'
-dotenv.config()
+import { variables } from './modules/variables.js'
 
-const TOKEN = process.argv[2] === 'test' ? process.env.BHAVATESTER_TOKEN : process.env.BHAVA_TOKEN
-const MONGODBURI = process.argv[2] === 'test' ? process.env.BHAVATESTER_MONGODBURI : process.env.BHAVA_MONGODBURI
+const { MONGODBURI, TOKEN } = variables()
 
 const client = new Client({ intents: ['Guilds', 'GuildMessages'] })
 

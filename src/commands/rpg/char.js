@@ -1,5 +1,5 @@
 import { map, zones } from '../../modules/rpg/map.js'
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 import dedent from 'dedent'
 
 export const char = {
@@ -17,10 +17,10 @@ export const char = {
 
 export const charRes = {
   async execute (interaction) {
-    const user = await userChecks.spawnCheck(interaction)
+    const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
-    const mentionedUser = await userChecks.mentionedUserCheck(interaction)
+    const mentionedUser = await checks.mentionedUserCheck(interaction)
     if (!mentionedUser) { return }
 
     if (mentionedUser.id === user.id) {

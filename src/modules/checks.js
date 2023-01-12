@@ -1,8 +1,9 @@
 import { db } from './database.js'
 
-export const userChecks = {}
+export const
+checks = {}
 
-userChecks.spawnCheck = async (interaction) => {
+checks.spawnCheck = async (interaction) => {
   // check if user exists
   let user = await db.findOneUser(interaction.user.id)
 
@@ -32,7 +33,7 @@ userChecks.spawnCheck = async (interaction) => {
   return user
 }
 
-userChecks.userCheck = async (interaction) => {
+checks.userCheck = async (interaction) => {
   // check if user exists
   let user = await db.findOneUser(interaction.user.id)
 
@@ -53,7 +54,7 @@ userChecks.userCheck = async (interaction) => {
   return user
 }
 
-userChecks.mentionedUserCheck = async (interaction) => {
+checks.mentionedUserCheck = async (interaction) => {
   // check if user exists
   let user = await db.findOneUser(interaction.options.get('user').value)
 
@@ -74,7 +75,7 @@ userChecks.mentionedUserCheck = async (interaction) => {
   return user
 }
 
-userChecks.createMentionedUserCheck = async (interaction) => {
+checks.createMentionedUserCheck = async (interaction) => {
   // check if user exists
   let user = await db.findOneUser(interaction.options.get('user').value)
 

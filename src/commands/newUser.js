@@ -1,4 +1,4 @@
-import { userChecks } from '../modules/userChecks.js'
+import { checks } from '../modules/checks.js'
 
 export const newUser = {
   name: 'newuser',
@@ -15,7 +15,7 @@ export const newUser = {
 
 export const newUserRes = {
   async execute (interaction) {
-    const user = await userChecks.createMentionedUserCheck(interaction)
+    const user = await checks.createMentionedUserCheck(interaction)
     if (!user) { return }
 
     await interaction.reply('User created')

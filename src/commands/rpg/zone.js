@@ -1,6 +1,6 @@
 import { db } from '../../modules/database.js'
 import { zones } from '../../modules/rpg/map.js'
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 
 export const zone = {
   name: 'zone',
@@ -17,7 +17,7 @@ export const zone = {
 
 export const zoneRes = {
   async execute (interaction) {
-    const user = await userChecks.spawnCheck(interaction)
+    const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
     const foundZone = await db.findOneZone(interaction, interaction.options.get('zone').value.toLowerCase())

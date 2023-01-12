@@ -1,5 +1,5 @@
 import { db } from '../../modules/database.js'
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 import { map } from '../../modules/rpg/map.js'
 import dedent from 'dedent'
 
@@ -10,7 +10,7 @@ export const spawn = {
 
 export const spawnRes = {
   async execute (interaction) {
-    const user = await userChecks.userCheck(interaction)
+    const user = await checks.userCheck(interaction)
     if (!user) { return }
 
     if (user.char.zone !== 101) {

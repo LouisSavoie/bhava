@@ -1,4 +1,4 @@
-import { userChecks } from '../../modules/userChecks.js'
+import { checks } from '../../modules/checks.js'
 
 export const charName = {
   name: 'charname',
@@ -15,7 +15,7 @@ export const charName = {
 
 export const charNameRes = {
   async execute (interaction) {
-    const user = await userChecks.userCheck(interaction)
+    const user = await checks.userCheck(interaction)
     if (!user) { return }
 
     user.char.name = interaction.options.get('name').value

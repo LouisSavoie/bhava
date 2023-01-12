@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/app.js",
     "start-test": "node ./src/app.js test",
-    "dev": "nodemon",
+    "start-dev": "nodemon ./src/app.js dev",
     "lint": "npx eslint './src/**'",
-    "fix": "npx eslint './src/**' --fix"
+    "lintf": "npx eslint './src/**' --fix"
   },
   "repository": {
     "type": "git",
