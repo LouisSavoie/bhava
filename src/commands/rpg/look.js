@@ -14,26 +14,15 @@ export const lookRes = {
     const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
-    let foundZone = await db.findOneZone(interaction, map[user.char.zone])
-
-    if (!foundZone) {
-      foundZone = await db.newZone(interaction, map[user.char.zone])
-    }
-
-    if (foundZone === 'error') {
-      await interaction.reply({
-        ephemeral: true,
-        content: 'A database error occurred, please try again later'
-      })
-      return
-    }
+    const zone = await checks.createZoneCheck(interaction, map[user.char.zone])
+    if (!zone) { return }
 
     await interaction.reply({
       ephemeral: true,
       content: dedent(`
-      The ${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(foundZone.resources)}
-      It ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(foundZone.monsters)}
-      ${!foundZone.inventory.length ? 'There is nothing' : 'There is ' + stringify.arrayAsList(foundZone.inventory)} on the ground here
+      The ${zone.displayName} ${!zone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(zone.resources)}
+      It ${!zone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(zone.monsters)}
+      ${!zone.inventory.length ? 'There is nothing' : 'There is ' + stringify.arrayAsList(zone.inventory)} on the ground here
       `)
     })
   }

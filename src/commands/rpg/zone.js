@@ -21,20 +21,13 @@ export const zoneRes = {
     const user = await checks.spawnCheck(interaction)
     if (!user) { return }
 
-    const foundZone = await db.findOneZone(interaction, interaction.options.get('zone').value.toLowerCase())
+    const zone = await checks.zoneCheck(interaction, interaction.options.get('zone').value.toLowerCase())
+    if (zone === 'error') { return }
 
-    if (foundZone === 'error') {
+    if (zone) {
       await interaction.reply({
         ephemeral: true,
-        content: 'A database error occured, please try again later'
-      })
-      return
-    }
-
-    if (foundZone) {
-      await interaction.reply({
-        ephemeral: true,
-        content: `${foundZone.displayName} ${!foundZone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(foundZone.resources)} and ${!foundZone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(foundZone.monsters)}`
+        content: `${zone.displayName} ${!zone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(zone.resources)} and ${!zone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(zone.monsters)}`
       })
       return
     }

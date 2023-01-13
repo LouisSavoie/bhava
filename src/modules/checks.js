@@ -16,7 +16,7 @@ checks.spawnCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: 'A database error occured, please try again later'
+      content: 'A database error occurred, please try again later'
     })
     return false
   }
@@ -46,7 +46,7 @@ checks.userCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: 'A database error occured, please try again later'
+      content: 'A database error occurred, please try again later'
     })
     return false
   }
@@ -67,7 +67,7 @@ checks.mentionedUserCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: 'A database error occured, please try again later'
+      content: 'A database error occurred, please try again later'
     })
     return false
   }
@@ -83,7 +83,7 @@ checks.createMentionedUserCheck = async (interaction) => {
   if (user === 'error') {
     await interaction.reply({
       ephemeral: true,
-      content: 'A database error occured, please try again later'
+      content: 'A database error occurred, please try again later'
     })
     return false
   }
@@ -102,4 +102,40 @@ checks.createMentionedUserCheck = async (interaction) => {
   }
 
   return user
+}
+
+checks.createZoneCheck = async (interaction, zoneName) => {
+  // check if zone exists
+  let zone = await db.findOneZone(interaction, zoneName)
+
+  // if not create it
+  if (!zone) {
+    zone = await db.newZone(interaction, zoneName)
+  }
+
+  // check for DB errors
+  if (zone === 'error') {
+    await interaction.reply({
+      ephemeral: true,
+      content: 'A database error occurred, please try again later'
+    })
+    return false
+  }
+
+  return zone
+}
+
+checks.zoneCheck = async (interaction, zoneName) => {
+  // check if zone exists
+  let zone = await db.findOneZone(interaction, zoneName)
+
+  // check for DB errors
+  if (zone === 'error') {
+    await interaction.reply({
+      ephemeral: true,
+      content: 'A database error occurred, please try again later'
+    })
+  }
+
+  return zone
 }

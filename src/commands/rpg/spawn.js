@@ -37,13 +37,10 @@ export const spawnRes = {
     })
 
     user.char.zone = 505
+
+    const zone = await checks.createZoneCheck(interaction, map[user.char.zone])
+    if (!zone) { return }
+
     user.save()
-
-    // check if starting zone exists (first first player per server)
-    const foundZone = await db.findOneZone(interaction, map[user.char.zone])
-
-    if (!foundZone) {
-      await db.newZone(interaction, map[user.char.zone])
-    }
   }
 }

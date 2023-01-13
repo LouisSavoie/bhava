@@ -42,9 +42,9 @@ export const moveRes = {
         break
     }
 
-    const zone = zones[map[user.char.zone]]
+    const zoneExists = zones[map[user.char.zone]]
 
-    if (!zone) {
+    if (!zoneExists) {
       await interaction.reply({
         ephemeral: true,
         content: 'There is nothing of interest in that direction'
@@ -52,13 +52,10 @@ export const moveRes = {
       return
     }
 
+    const zone = await checks.createZoneCheck(interaction, map[user.char.zone])
+    if (!zone) { return }
+
     user.save()
-
-    const foundZone = await db.findOneZone(interaction, map[user.char.zone])
-
-    if (!foundZone) {
-      await db.newZone(interaction, map[user.char.zone])
-    }
 
     await interaction.reply({
       ephemeral: true,
