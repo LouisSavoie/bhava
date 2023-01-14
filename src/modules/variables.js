@@ -18,7 +18,7 @@ export const variables = () => {
     vars.SERVERID = process.env.BHAVATESTER_SERVERID
     return vars
   }
-  
+
   vars.MONGODBURI = process.env.BHAVA_MONGODBURI
   vars.TOKEN = process.env.BHAVA_TOKEN
   vars.APPID = process.env.BHAVA_APPID

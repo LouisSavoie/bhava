@@ -1,7 +1,7 @@
 import { db } from './database.js'
 
 export const
-checks = {}
+  checks = {}
 
 checks.spawnCheck = async (interaction) => {
   // check if user exists
@@ -127,7 +127,7 @@ checks.createZoneCheck = async (interaction, zoneName) => {
 
 checks.zoneCheck = async (interaction, zoneName) => {
   // check if zone exists
-  let zone = await db.findOneZone(interaction, zoneName)
+  const zone = await db.findOneZone(interaction, zoneName)
 
   // check for DB errors
   if (zone === 'error') {

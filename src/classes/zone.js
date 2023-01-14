@@ -4,6 +4,6 @@ export class Zone {
     this.name = displayName.toLowerCase()
     this.resources = resources
     this.monsters = monsters
-    this.inventory = [] 
+    this.inventory = []
   }
 }

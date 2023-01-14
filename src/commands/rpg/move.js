@@ -1,4 +1,3 @@
-import { db } from '../../modules/database.js'
 import { map, zones } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
 
