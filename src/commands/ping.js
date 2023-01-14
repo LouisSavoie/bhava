@@ -5,6 +5,9 @@ export const ping = {
 
 export const pingRes = {
   async execute (interaction) {
-    await interaction.reply('Pong!')
+    await interaction.reply({
+      ephemeral: true,
+      content: 'Pong!'
+    })
   }
 }
