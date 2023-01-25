@@ -9,6 +9,8 @@ const serverSchema = new mongoose.Schema({
 // COMBAT TEMPLATE
 /*
 Date: {
+  owner: User,
+  invited: [userID],
   combatants: {
     userID: User Obj
   },
