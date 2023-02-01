@@ -1,7 +1,6 @@
-import dedent from 'dedent'
 import { map } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
-import { stringify } from '../../modules/stringify.js'
+import { responses } from '../../modules/responses.js'
 
 export const look = {
   name: 'look',
@@ -16,13 +15,6 @@ export const lookRes = {
     const zone = await checks.createZoneCheck(interaction, map[user.char.zone])
     if (!zone) { return }
 
-    await interaction.reply({
-      ephemeral: true,
-      content: dedent(`
-      The ${zone.displayName} ${!zone.resources.length ? 'is void of resources' : 'contains sources of ' + stringify.arrayAsList(zone.resources)}
-      It ${!zone.monsters.length ? 'is under no threat from monsters' : 'is overrun with ' + stringify.arrayAsList(zone.monsters)}
-      ${!zone.inventory.length ? 'There is nothing' : 'There is ' + stringify.arrayAsList(zone.inventory)} on the ground here
-      `)
-    })
+    responses.zoneInfo(interaction, zone, true)
   }
 }

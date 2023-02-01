@@ -1,5 +1,6 @@
 import { map, zones } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
+import { responses } from '../../modules/responses.js'
 
 export const move = {
   name: 'move',
@@ -43,22 +44,13 @@ export const moveRes = {
 
     const zoneExists = zones[map[user.char.zone]]
 
-    if (!zoneExists) {
-      await interaction.reply({
-        ephemeral: true,
-        content: 'There is nothing of interest in that direction'
-      })
-      return
-    }
+    if (!zoneExists) { responses.moveDoesNotExist(interaction); return }
 
     const zone = await checks.createZoneCheck(interaction, map[user.char.zone])
     if (!zone) { return }
 
     user.save()
 
-    await interaction.reply({
-      ephemeral: true,
-      content: `${user.char.name} went ${direction} to the ${zone.displayName}`
-    })
+    responses.moved(interaction, direction, zone)
   }
 }

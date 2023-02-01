@@ -1,6 +1,7 @@
 import { map, zones } from '../../modules/rpg/map.js'
 import { checks } from '../../modules/checks.js'
 import dedent from 'dedent'
+import { responses } from '../../modules/responses.js'
 
 export const char = {
   name: 'char',
@@ -23,20 +24,8 @@ export const charRes = {
     const mentionedUser = await checks.mentionedUserCheck(interaction)
     if (!mentionedUser) { return }
 
-    if (mentionedUser.id === user.id) {
-      await interaction.reply({
-        ephemeral: true,
-        content: dedent(`
-        Name: ${mentionedUser.char.name}
-        Zone: ${zones[map[mentionedUser.char.zone]].displayName}
-        `)
-      })
-      return
-    }
+    if (mentionedUser.id === user.id) { responses.charInfo(interaction, mentionedUser); return }
 
-    await interaction.reply({
-      ephemeral: true,
-      content: `${mentionedUser.char.name} is stronk and stuff (Placeholder vague description)`
-    })
+    responses.charInfoVague(interaction, mentionedUser)
   }
 }

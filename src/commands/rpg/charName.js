@@ -1,4 +1,5 @@
 import { checks } from '../../modules/checks.js'
+import { responses } from '../../modules/responses.js'
 
 export const charName = {
   name: 'charname',
@@ -21,9 +22,6 @@ export const charNameRes = {
     user.char.name = interaction.options.get('name').value
     user.save()
 
-    await interaction.reply({
-      ephemeral: true,
-      content: `Name changed to ${user.char.name}`
-    })
+    responses.charRenamed(interaction, user)
   }
 }
