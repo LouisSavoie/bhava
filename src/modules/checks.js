@@ -1,4 +1,5 @@
 import { db } from './database.js'
+import { responses } from './responses.js'
 
 export const
   checks = {}
@@ -13,22 +14,10 @@ checks.spawnCheck = async (interaction) => {
   }
 
   // check for DB errors
-  if (user === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-    return false
-  }
+  if (user === 'error') { responses.dbError(interaction); return false }
 
   // check if char is at spawn
-  if (user.char.zone === 101) {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'Please use `/spawn` before using RPG commands to get useful information and enter the realm'
-    })
-    return false
-  }
+  if (user.char.zone === 101) { responses.notSpawned(interaction); return false }
 
   return user
 }
@@ -43,13 +32,7 @@ checks.userCheck = async (interaction) => {
   }
 
   // check for DB errors
-  if (user === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-    return false
-  }
+  if (user === 'error') { responses.dbError(interaction); return false }
 
   return user
 }
@@ -64,13 +47,7 @@ checks.mentionedUserCheck = async (interaction) => {
   }
 
   // check for DB errors
-  if (user === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-    return false
-  }
+  if (user === 'error') { responses.dbError(interaction); return false }
 
   return user
 }
@@ -80,21 +57,9 @@ checks.createMentionedUserCheck = async (interaction) => {
   let user = await db.findOneUser(interaction.options.get('user').value)
 
   // check for DB errors
-  if (user === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-    return false
-  }
+  if (user === 'error') { responses.dbError(interaction); return false }
 
-  if (user) {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'User already exists'
-    })
-    return false
-  }
+  if (user) { responses.userAlreadyExists(interaction); return false }
 
   // if not create it
   if (!user) {
@@ -114,13 +79,7 @@ checks.createZoneCheck = async (interaction, zoneName) => {
   }
 
   // check for DB errors
-  if (zone === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-    return false
-  }
+  if (zone === 'error') { responses.dbError(interaction); return false }
 
   return zone
 }
@@ -130,12 +89,7 @@ checks.zoneCheck = async (interaction, zoneName) => {
   const zone = await db.findOneZone(interaction, zoneName)
 
   // check for DB errors
-  if (zone === 'error') {
-    await interaction.reply({
-      ephemeral: true,
-      content: 'A database error occurred, please try again later'
-    })
-  }
+  if (zone === 'error') { responses.dbError(interaction); return false }
 
   return zone
 }

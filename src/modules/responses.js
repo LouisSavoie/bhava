@@ -1,4 +1,5 @@
 import dedent from 'dedent'
+import { log } from './log.js'
 import { stringify } from './stringify.js'
 
 export const responses = {}
@@ -6,16 +7,44 @@ export const responses = {}
 async function respond(interaction, response) {
   try {
     await interaction.reply(response)
+    log.responseSent(response.content)
   } catch (error) {
     console.log(error)
   }
 }
 
-/* ====================
-   ======= RPG ========
-   ==================== */
+/*==================
+===== GENERAL ======
+==================*/
+
+// errors
+responses.dbError = (interaction) => {
+  respond(interaction, {
+    ephemeral: true,
+    content: 'A database error occurred, please try again later'
+  })
+}
+
+// user
+responses.userAlreadyExists = (interaction) => {
+  respond(interaction, {
+    ephemeral: true,
+    content: 'User already exists'
+  })
+}
+
+/*==================
+======= RPG ========
+==================*/
 
 // spawn
+responses.notSpawned = (interaction) => {
+  respond(interaction, {
+    ephemeral: true,
+    content: 'Please use `/spawn` before using RPG commands to get useful information and enter the realm'
+  })
+}
+
 responses.alreadySpawned = (interaction) => {
   respond(interaction, {
     ephemeral: true,

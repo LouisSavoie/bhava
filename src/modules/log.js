@@ -54,3 +54,8 @@ log.newZone = (newZone) => {
 log.foundZone = (foundZone) => {
   console.log(`${timestamp()} Found Zone: ${foundZone.name},  server: ${foundZone.serverID}`)
 }
+
+// RESPONSES
+log.responseSent = (content) => {
+  console.log(`${timestamp()} Response Sent:\n${content}`)
+}
